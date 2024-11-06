@@ -14,15 +14,14 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 #     return ikb_builder.as_markup()
 
 
-# Example builder
-# def get_reply_kb(items: str | list):
-#     if isinstance(items, str):
-#         items = [items]
-#
-#     builder = ReplyKeyboardBuilder()
-#     [builder.button(text=text) for text in items]
-#
-#     return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
+def get_reply_kb(items: str | list):
+    if isinstance(items, str):
+        items = [items]
+
+    builder = ReplyKeyboardBuilder()
+    [builder.button(text=text) for text in items]
+
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
 
 
 # Remove keyboard

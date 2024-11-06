@@ -1,6 +1,6 @@
 from aiogram.fsm.state import StatesGroup, State
 
 
-class SomeState(StatesGroup):
-    state1 = State()
-    state2 = State()
+class StartState(StatesGroup):
+    GET_USER_GROUP = State()
+    GET_USER_READY = State()
