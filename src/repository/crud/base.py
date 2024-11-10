@@ -51,6 +51,7 @@ class BaseCRUDRepository(Generic[T]):
             select(self.model)
             .filter(*filters)
             .filter_by(**filter_by)
+            .order_by()
         )
         return filter_stmt
 
