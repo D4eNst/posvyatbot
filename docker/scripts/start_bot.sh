@@ -22,12 +22,13 @@ echo "Applying migrations..."
 alembic upgrade head
 echo "Migrations applied."
 
-echo "Setting WebHook..."
-python management.py
-echo "WebHook has been set."
+# Command to set webhook if it's using
+#echo "Setting WebHook..."
+#python management.py
+#echo "WebHook has been set."
 
-# Start uvicorn:
-uvicorn webhook_main:app --host 0.0.0.0 --port 8080 --workers 4
+# Start bot:
+python polling_main.py
 
 # Evaluating passed command (do not touch):
 # shellcheck disable=SC2086

@@ -1,4 +1,4 @@
-name: aiogram-bot
+name: posvyat-bot
 
 services:
     postgres_for_bot:
@@ -21,7 +21,7 @@ services:
         image: redis:7.2.4-alpine
         container_name: redis_container
         volumes:
-            - redis-data:/data
+            - redis_data:/data
         expose:
             - 6379
         env_file:
@@ -39,7 +39,6 @@ services:
             context: ../.
             dockerfile: docker/bot.Dockerfile
             target: production_build
-
             args:
                 BOT_ENV: production
                 UID: ${UID:-1000}
@@ -49,16 +48,17 @@ services:
         depends_on:
             - postgres_for_bot
             - redis_for_bot
-        command: bash /scripts/uvicorn.sh
-        expose:
-            - 8080
+        command: bash /scripts/start_bot.sh
         env_file:
             - ../src/.env
         logging:
             options:
                 max-size: 50m
-# TODO add service proxy (nginx)
+
 volumes:
     postgres:
+        name: postgres-posvyat
     postgres_config:
-    redis-data:
+        name: postgres_config-posvyat
+    redis_data:
+        name: redis_data-posvyat
